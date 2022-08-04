@@ -1,11 +1,13 @@
 package practiseproblem;
 
+import java.util.Scanner;
+
 public class BinarySearchTreeProgram {
 
 	/*
 	 * Class containing left and right child of current node and key value
 	 */
-	class Node {
+	static class Node {
 		int key;
 		Node left, right;
 
@@ -18,7 +20,7 @@ public class BinarySearchTreeProgram {
 	/*
 	 * Defining Root of BST
 	 */
-	Node root;
+	static Node root;
 
 	/*
 	 * Defining Constructor
@@ -92,16 +94,7 @@ public class BinarySearchTreeProgram {
 		BinarySearchTreeProgram tree = new BinarySearchTreeProgram();
 
 		/*
-		 * Let us create following BST 
-		 *    56
-		 *   / \ 
-		 * 30   70
-		 * / \  / \
-		 *22 40 60 95
-		 * \      \
-		 *  11     65
-		 * / \     / \
-		 *3  16   63 67
+		 * Let us create BST as shown in assignment 
 		 */
 		tree.insert(56);
 		tree.insert(30);
@@ -119,6 +112,48 @@ public class BinarySearchTreeProgram {
 
 		// print in order traversal of the BST
 		tree.inorder();
+
+		/*
+		 * To check the element present in BST or not Taking input from the user by
+		 * using scnner Defining key variable
+		 */
+		System.out.println("Please enter the number to be checked");
+		Scanner scanner = new Scanner(System.in);
+		int key = scanner.nextInt();
+
+		if (ifNodeExists(root, key)) {
+			System.out.println("The node is present in BST");
+		} else {
+			System.out.println("The node is not present in BST");
+		}
+
+	}
+
+	static boolean ifNodeExists(Node node, int key) {
+		if (node == null)
+			return false;
+
+		if (node.key == key)
+			return true;
+
+		/*
+		 *  then recur on left subtree /
+		 */
+		boolean res1 = ifNodeExists(node.left, key);
+
+		/*
+		 *  node found, no need to look further
+		 */
+		if (res1)
+			return true;
+
+		/*
+		 * node is not found in left,
+		 * so recur on right subtree
+		 */
+		boolean res2 = ifNodeExists(node.right, key);
+
+		return res2;
 	}
 
 }
