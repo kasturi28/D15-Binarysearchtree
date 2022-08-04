@@ -32,7 +32,7 @@ public class BinarySearchTreeProgram {
 	}
 
 	/*
-	 *  Defining method insert 
+	 * Defining method insert
 	 */
 	void insert(int key) {
 		root = insertRec(root, key);
@@ -52,19 +52,21 @@ public class BinarySearchTreeProgram {
 		}
 
 		/*
-		 * if the root is not empty & next value is less than root then it will added to left side 
+		 * if the root is not empty & next value is less than root then it will added to
+		 * left side
 		 */
 		else if (key < root.key)
 			root.left = insertRec(root.left, key);
 		/*
-		 * if the root is not empty & next value is greater than root then it will added to right side
+		 * if the root is not empty & next value is greater than root then it will added
+		 * to right side
 		 */
 		else if (key > root.key)
 			root.right = insertRec(root.right, key);
 
-		/* 
-		 * return the (unchanged) node pointer 
-		 * */
+		/*
+		 * return the (unchanged) node pointer
+		 */
 		return root;
 	}
 
@@ -73,9 +75,8 @@ public class BinarySearchTreeProgram {
 	}
 
 	/*
-	 *  A utility function to
-	* do in order traversal of BST
-	*/
+	 * A utility function to do in order traversal of BST
+	 */
 	void inorderRec(Node root) {
 		if (root != null) {
 			inorderRec(root.left);
@@ -91,11 +92,30 @@ public class BinarySearchTreeProgram {
 		BinarySearchTreeProgram tree = new BinarySearchTreeProgram();
 
 		/*
-		 * Let us create following BST 56 / \ 30 70
+		 * Let us create following BST 
+		 *    56
+		 *   / \ 
+		 * 30   70
+		 * / \  / \
+		 *22 40 60 95
+		 * \      \
+		 *  11     65
+		 * / \     / \
+		 *3  16   63 67
 		 */
 		tree.insert(56);
 		tree.insert(30);
+		tree.insert(22);
+		tree.insert(11);
+		tree.insert(03);
+		tree.insert(16);
+		tree.insert(40);
 		tree.insert(70);
+		tree.insert(60);
+		tree.insert(65);
+		tree.insert(63);
+		tree.insert(67);
+		tree.insert(95);
 
 		// print in order traversal of the BST
 		tree.inorder();
